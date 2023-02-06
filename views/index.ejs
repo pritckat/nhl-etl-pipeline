@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NHL API ETL Pipeline</title>
-</head>
-<body>
-    <h1>Hello, World!</h1>
-</body>
+  </head>
+  <body>
+    <h1>Hello, World!!</h1>
+    <select id="teamName">
+      <option hidden disabled selected value>Select a Team</option>
+      <% for (let i = 0; i < teams.length; i++) {%>
+        <option value="<%=teams[i].id%>"><%=teams[i].name%></option>
+      <% } %>
+    </select>
+  </body>
 </html>
