@@ -1,12 +1,13 @@
-const request = require('superagent');
+const api_util = require('../lib/api_util');
 
 module.exports = {
   getIndex: async (req, res) => {
-    try {
-      const teams = await request.get('https://statsapi.web.nhl.com/api/v1/teams');
-      res.render('index.ejs', {teams: teams.body.teams});
-    } catch (err) {
-      console.error(err);
-    }
+    const teams = await api_util.getTeams();
+    res.render('index.ejs', {teams: teams});
   },
+
+  submit: async (req, res) => {
+    api_util.getTeamInfo(req.body.teamId.split('.')[0], req.body.teamYear);
+    res.redirect('/');
+  }
 }

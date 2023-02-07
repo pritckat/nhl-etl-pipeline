@@ -8,16 +8,18 @@
   </head>
   <body>
     <h1>Hello, World!!</h1>
-    <select id="teamName">
-      <option hidden disabled selected value>Select a Team</option>
-      <% for (let i = 0; i < teams.length; i++) {%>
-        <option value="<%=teams[i].id%>.<%=teams[i].firstYearOfPlay%>"><%=teams[i].name%></option>
-      <% } %>
-    </select>
-    <select disabled id="teamYear">
-      <option hidden disabled selected value>Select a Year</option>
-    </select>
-    <button id="submit">Submit</button>
+    <form method="post" action="/submit" name="teamForm">
+      <select id="teamName" name="teamId">
+        <option hidden disabled selected value>Select a Team</option>
+        <% for (let i = 0; i < teams.length; i++) {%>
+          <option value="<%=teams[i].id%>.<%=teams[i].firstYearOfPlay%>"><%=teams[i].name%></option>
+        <% } %>
+      </select>
+      <select disabled id="teamYear" name="teamYear">
+        <option hidden disabled selected value>Select a Year</option>
+      </select>
+      <button id="submit">Submit</button>
+    </form>
   </body>
   <script src="js/main.js"></script>
 </html>

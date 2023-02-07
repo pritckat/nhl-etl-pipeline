@@ -28,7 +28,7 @@ const teamSelectChange = () => {
 }
 
 const submit = () => {
-  console.log('submit', teamSelect.value.split('.')[0], teamYearSelect.value);
+  document.teamForm.submit();
 }
 
 teamSelect.addEventListener('change', teamSelectChange);
