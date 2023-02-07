@@ -1,5 +1,6 @@
 const teamSelect = document.querySelector('#teamName');
 const teamYearSelect = document.querySelector('#teamYear');
+const submitButton = document.querySelector('#submit');
 
 const teamSelectChange = () => {
   teamYearSelect.disabled = true;
@@ -26,4 +27,9 @@ const teamSelectChange = () => {
   teamYearSelect.disabled = false;
 }
 
+const submit = () => {
+  console.log('submit', teamSelect.value.split('.')[0], teamYearSelect.value);
+}
+
 teamSelect.addEventListener('change', teamSelectChange);
+submitButton.addEventListener('click', submit);
