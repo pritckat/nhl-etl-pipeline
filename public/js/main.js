@@ -3,11 +3,12 @@ const teamYearSelect = document.querySelector('#teamYear');
 
 const teamSelectChange = () => {
   teamYearSelect.disabled = true;
-  document.querySelectorAll('#teamYear option').forEach(option => option.remove())
+  document.querySelectorAll('#teamYear option').forEach(option => option.remove());
 
   const value = teamSelect.value.split('.');
   const year = Number(value[1]);
   const currentYear = new Date().getFullYear();
+
   const placeholder = document.createElement('option');
   placeholder.hidden = true;
   placeholder.disabled = true;
@@ -15,6 +16,7 @@ const teamSelectChange = () => {
   placeholder.value = null;
   placeholder.innerHTML = "Select a Year";
   teamYearSelect.appendChild(placeholder);
+
   for (var i = year; i<=currentYear; i++){
     var opt = document.createElement('option');
     opt.value = i;
@@ -24,4 +26,4 @@ const teamSelectChange = () => {
   teamYearSelect.disabled = false;
 }
 
-teamSelect.addEventListener('change', teamSelectChange)
+teamSelect.addEventListener('change', teamSelectChange);
