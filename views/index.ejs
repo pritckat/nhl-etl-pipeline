@@ -14,6 +14,9 @@
         <option value="<%=teams[i].id%>.<%=teams[i].firstYearOfPlay%>"><%=teams[i].name%></option>
       <% } %>
     </select>
+    <select disabled id="teamYear">
+      <option hidden disabled selected value>Select a Year</option>
+    </select>
   </body>
   <script src="js/main.js"></script>
 </html>
