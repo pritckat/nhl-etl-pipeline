@@ -11,8 +11,9 @@
     <select id="teamName">
       <option hidden disabled selected value>Select a Team</option>
       <% for (let i = 0; i < teams.length; i++) {%>
-        <option value="<%=teams[i].id%>"><%=teams[i].name%></option>
+        <option value="<%=teams[i].id%>.<%=teams[i].firstYearOfPlay%>"><%=teams[i].name%></option>
       <% } %>
     </select>
   </body>
+  <script src="js/main.js"></script>
 </html>
