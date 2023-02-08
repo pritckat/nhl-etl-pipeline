@@ -1,14 +1,14 @@
-const teamSelect = document.querySelector('#teamName');
-const teamYearSelect = document.querySelector('#teamYear');
+const intTeamSelect = document.querySelector('#interactiveTeamName');
+const intTeamYearSelect = document.querySelector('#interactiveTeamYear');
 const submitButton = document.querySelector('#submit');
 const playerSubmitButton = document.querySelector('#playerSubmit')
 const teamSubmitButton = document.querySelector('#teamSubmit')
 
 const teamSelectChange = () => {
-  teamYearSelect.disabled = true;
+  intTeamYearSelect.disabled = true;
   document.querySelectorAll('#teamYear option').forEach(option => option.remove());
 
-  const value = teamSelect.value.split('.');
+  const value = intTeamSelect.value.split('.');
   const year = Number(value[1]);
   const currentYear = new Date().getFullYear();
 
@@ -18,15 +18,15 @@ const teamSelectChange = () => {
   placeholder.selected = true;
   placeholder.value = null;
   placeholder.innerHTML = "Select a Year";
-  teamYearSelect.appendChild(placeholder);
+  intTeamYearSelect.appendChild(placeholder);
 
   for (var i = year; i<=currentYear; i++){
     var opt = document.createElement('option');
     opt.value = i;
     opt.innerHTML = i;
-    teamYearSelect.appendChild(opt);
+    intTeamYearSelect.appendChild(opt);
   }
-  teamYearSelect.disabled = false;
+  intTeamYearSelect.disabled = false;
 }
 
 const submit = () => {
@@ -41,7 +41,7 @@ const teamSubmit = () => {
   document.teamForm.submit();
 }
 
-teamSelect.addEventListener('change', teamSelectChange);
+intTeamSelect.addEventListener('change', teamSelectChange);
 submitButton.addEventListener('click', submit);
 playerSubmitButton.addEventListener('click', playerSubmit);
 teamSubmitButton.addEventListener('click', teamSubmit);
