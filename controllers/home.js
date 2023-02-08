@@ -58,5 +58,31 @@ module.exports = {
         })
       }
     });
+  },
+
+  teamSubmit: async (req, res) => {
+    console.log('team submit', req.body);
+    api_util.getTeamInfo(req.body.teamId, req.body.teamYear, (err, info) => {
+      if (err) {
+        console.log('err', err)
+      } else {
+        csv_util.writeTeamCsv(info, (err, filename) => {
+          if (err) {
+            console.log('err', err);
+          } else {
+            res.set({
+              'Location': '/'
+            });
+            res.download(path.resolve(filename), (err) => {
+              if (err) {
+                console.log(err);
+              } else {
+                fs.unlinkSync(path.resolve(filename))
+              }
+            });
+          }
+        })
+      }
+    });
   }
 }
