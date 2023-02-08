@@ -60,4 +60,4 @@ For development, you will only need Node.js installed in your environement.
 
 I've never actually written tests before and am not terribly confident in my abiility to write tests for a server. Advice would be very much appreciated here.
 
-  $ npm test
+    $ npm test
