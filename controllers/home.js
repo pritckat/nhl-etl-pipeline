@@ -36,6 +36,13 @@ module.exports = {
 
   playerSubmit: async (req, res) => {
     console.log('player submit', req.body);
+    api_util.getPlayerInfo(req.body.playerId, req.body.playerYear, (err, resp) => {
+      if (err) {
+        console.log('err', err);
+      } else {
+        console.log('done');
+      }
+    })
     res.redirect('/');
   }
 }
