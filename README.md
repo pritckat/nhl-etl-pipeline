@@ -48,7 +48,7 @@ For development, you will only need Node.js installed in your environement.
 
 ## Install
 
-    $ git clone https://github.com/pritckat/nhl-etl-pipeline
+    $ git clone https://github.com/pritckat/nhl-etl-pipeline.git
     $ cd nhl-etl-pipeline
     $ npm install
 
