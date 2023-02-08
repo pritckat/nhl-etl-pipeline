@@ -35,14 +35,19 @@ module.exports = {
   },
 
   playerSubmit: async (req, res) => {
-    console.log('player submit', req.body);
+    if (!req.body.playerId || !req.body.playerYear) {
+      res.status(400).json('playerId and playerYear required')
+      return;
+    }
     api_util.getPlayerInfo(req.body.playerId, req.body.playerYear, (err, info) => {
       if (err) {
         console.log('err', err)
+        res.status(400).json(err)
       } else {
         csv_util.writePlayerCsv(info, (err, filename) => {
           if (err) {
             console.log('err', err);
+            res.status(400).json(err)
           } else {
             res.set({
               'Location': '/'
@@ -50,6 +55,7 @@ module.exports = {
             res.download(path.resolve(filename), (err) => {
               if (err) {
                 console.log(err);
+                res.status(400).json(err)
               } else {
                 fs.unlinkSync(path.resolve(filename))
               }
@@ -61,21 +67,24 @@ module.exports = {
   },
 
   teamSubmit: async (req, res) => {
-    console.log('team submit', req.body);
+    if (!req.body.teamId || !req.body.teamYear) {
+      res.status(400).json('teamId and teamYear required')
+      return;
+    }
     api_util.getTeamInfo(req.body.teamId, req.body.teamYear, (err, info) => {
       if (err) {
-        console.log('err', err)
+        res.status(400).json(err)
       } else {
         csv_util.writeTeamCsv(info, (err, filename) => {
           if (err) {
-            console.log('err', err);
+            res.status(400).json(err)
           } else {
             res.set({
               'Location': '/'
             });
             res.download(path.resolve(filename), (err) => {
               if (err) {
-                console.log(err);
+                res.status(400).json(err)
               } else {
                 fs.unlinkSync(path.resolve(filename))
               }
