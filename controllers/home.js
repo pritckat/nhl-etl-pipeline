@@ -36,13 +36,27 @@ module.exports = {
 
   playerSubmit: async (req, res) => {
     console.log('player submit', req.body);
-    api_util.getPlayerInfo(req.body.playerId, req.body.playerYear, (err, resp) => {
+    api_util.getPlayerInfo(req.body.playerId, req.body.playerYear, (err, info) => {
       if (err) {
-        console.log('err', err);
+        console.log('err', err)
       } else {
-        console.log('done');
+        csv_util.writePlayerCsv(info, (err, filename) => {
+          if (err) {
+            console.log('err', err);
+          } else {
+            res.set({
+              'Location': '/'
+            });
+            res.download(path.resolve(filename), (err) => {
+              if (err) {
+                console.log(err);
+              } else {
+                fs.unlinkSync(path.resolve(filename))
+              }
+            });
+          }
+        })
       }
-    })
-    res.redirect('/');
+    });
   }
 }
