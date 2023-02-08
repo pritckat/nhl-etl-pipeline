@@ -32,5 +32,10 @@ module.exports = {
         })
       }
     });
+  },
+
+  playerSubmit: async (req, res) => {
+    console.log('player submit', req.body);
+    res.redirect('/');
   }
 }

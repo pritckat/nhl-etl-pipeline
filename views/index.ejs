@@ -7,7 +7,7 @@
     <title>NHL API ETL Pipeline</title>
   </head>
   <body>
-    <h1>Hello, World!!</h1>
+    <h1>Team Form</h1>
     <form method="post" action="/submit" name="teamForm">
       <select id="teamName" name="teamId">
         <option hidden disabled selected value>Select a Team</option>
@@ -19,6 +19,12 @@
         <option hidden disabled selected value>Select a Year</option>
       </select>
       <button id="submit">Submit</button>
+    </form>
+    <h1>Player Form</h1>
+    <form method="post" action="/playersubmit" name="playerForm">
+      <input type="text" name="playerId" placeholder="Enter Player ID">
+      <input type="text" name="playerYear" placeholder="Enter Year">	
+      <input type="submit" id="playerSubmit">	
     </form>
   </body>
   <script src="js/main.js"></script>
