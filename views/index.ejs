@@ -9,14 +9,14 @@
   <body>
     <h1>Team Form</h1>
     <form method="post" action="/teamsubmit" name="teamForm">
-      <input type="text" name="teamId" placeholder="Enter Team ID">
-      <input type="text" name="teamYear" placeholder="Enter Year">	
+      <input required type="text" id="teamId" name="teamId" placeholder="Enter Team ID">
+      <input required type="text" id="teamYear" name="teamYear" placeholder="Enter Year">	
       <input type="submit" id="teamSubmit">	
     </form>
     <h1>Player Form</h1>
     <form method="post" action="/playersubmit" name="playerForm">
-      <input type="text" name="playerId" placeholder="Enter Player ID">
-      <input type="text" name="playerYear" placeholder="Enter Year">	
+      <input required type="text" id="playerId" name="playerId" placeholder="Enter Player ID">
+      <input required type="text" id="playerYear" name="playerYear" placeholder="Enter Year">	
       <input type="submit" id="playerSubmit">	
     </form>
     <h1>Interactive Team Form</h1>

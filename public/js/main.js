@@ -3,6 +3,7 @@ const intTeamYearSelect = document.querySelector('#interactiveTeamYear');
 const submitButton = document.querySelector('#submit');
 const playerSubmitButton = document.querySelector('#playerSubmit')
 const teamSubmitButton = document.querySelector('#teamSubmit')
+const currentYear = new Date().getFullYear();
 
 const teamSelectChange = () => {
   intTeamYearSelect.disabled = true;
@@ -10,7 +11,6 @@ const teamSelectChange = () => {
 
   const value = intTeamSelect.value.split('.');
   const year = Number(value[1]);
-  const currentYear = new Date().getFullYear();
 
   const placeholder = document.createElement('option');
   placeholder.hidden = true;
@@ -29,19 +29,42 @@ const teamSelectChange = () => {
   intTeamYearSelect.disabled = false;
 }
 
+const yearSelectChange = () => {
+  submitButton.disabled = false;
+}
+
 const submit = () => {
   document.interactiveForm.submit();
 }
 
 const playerSubmit = () => {
-  document.playerForm.submit();
+  const playerYear = document.querySelector('#playerYear').value
+  const playerId = document.querySelector('#playerId').value;
+  if (!playerYear || !playerId) {
+    return;
+  }
+  if (/^\d+$/.test(playerId) && /^\d+$/.test(playerYear)) {
+    document.playerForm.submit();
+  } else {
+    return;
+  }
 }
 
 const teamSubmit = () => {
-  document.teamForm.submit();
+  const teamYear = document.querySelector('#teamYear').value
+  const teamId = document.querySelector('#teamId').value;
+  if (!teamId || !teamId) {
+    return;
+  }
+  if (/^\d+$/.test(teamId) && /^\d+$/.test(teamYear)) {
+    document.teamForm.submit();
+  } else {
+    return;
+  }
 }
 
 intTeamSelect.addEventListener('change', teamSelectChange);
+intTeamYearSelect.addEventListener('change', yearSelectChange);
 submitButton.addEventListener('click', submit);
 playerSubmitButton.addEventListener('click', playerSubmit);
 teamSubmitButton.addEventListener('click', teamSubmit);
