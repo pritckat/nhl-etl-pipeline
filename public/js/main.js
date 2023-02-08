@@ -7,11 +7,11 @@ const currentYear = new Date().getFullYear();
 
 const teamSelectChange = () => {
   intTeamYearSelect.disabled = true;
-  document.querySelectorAll('#teamYear option').forEach(option => option.remove());
+  document.querySelectorAll('#interactiveTeamYear option').forEach(option => option.remove());
 
   const value = intTeamSelect.value.split('.');
   const year = Number(value[1]);
-
+  console.log('year', year);
   const placeholder = document.createElement('option');
   placeholder.hidden = true;
   placeholder.disabled = true;
