@@ -11,7 +11,6 @@ const teamSelectChange = () => {
 
   const value = intTeamSelect.value.split('.');
   const year = Number(value[1]);
-  console.log('year', year);
   const placeholder = document.createElement('option');
   placeholder.hidden = true;
   placeholder.disabled = true;
