@@ -2,9 +2,9 @@
   "name": "nhl-etl-pipeline",
   "version": "1.0.0",
   "description": "Sportradar coding challenge, create etl pipeline from nhl api",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
@@ -19,6 +19,9 @@
     "superagent": "^8.0.9"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "jest": "^29.4.2",
+    "mocha": "^10.2.0",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.3"
   }
 }
